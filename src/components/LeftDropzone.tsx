@@ -11,16 +11,16 @@ const LeftDropzone: React.FC<Props> = ({ items, handleInputChange }) => {
         <div
           ref={provided.innerRef}
           {...provided.droppableProps}
-          className="min-h-200px bg-neutral-100 rounded-lg p-4"
+          className="min-h-200px bg-neutral-100 rounded-lg p-4 h-72"
         >
           {items.map((item, index) => (
-            <Draggable key={item.id} draggableId={item.id} index={index}>
+            <Draggable key={index} draggableId={item.id} index={index}>
               {(provided) => (
                 <div
                   ref={provided.innerRef}
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
-                  className="bg-gray-200 p-2 m-2"
+                  className="bg-gray-200 p-6 rounded-lg m-2"
                 >
                   {item.type === "text" && (
                     <input

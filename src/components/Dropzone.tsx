@@ -34,9 +34,10 @@ const Dropzone: React.FC = () => {
   const [tableData, setTableData] = useState<Item[]>([]);
 
   const handleDragEnd = (result: DropResult) => {
-    if (!result.destination) return;
-
     const { source, destination } = result;
+    if (destination === undefined || destination === null) return null;
+
+    if (destination.index === source.index) return null;
 
     if (source.droppableId === destination.droppableId) {
       const items =
