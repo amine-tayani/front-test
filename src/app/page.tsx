@@ -1,9 +1,9 @@
-import DropzoneComponent from "@/components/Dropzone";
+import Dropzone from "@/app/components/Dropzone";
 
 export default function Home() {
   return (
     <div>
-      <DropzoneComponent />
+      <Dropzone />
     </div>
   );
 }
