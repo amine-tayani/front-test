@@ -1,7 +1,7 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import styled from "@emotion/styled";
-import { Item } from "../types/item";
+import { CardProps, Item } from "../types/item";
 
 const Item = styled.div`
   display: flex;
@@ -15,11 +15,6 @@ const Item = styled.div`
   background: white;
   margin-top: 15px;
 `;
-
-interface CardProps {
-  item: Item;
-  index: number;
-}
 
 const Card: React.FC<CardProps> = ({ item, index }) => {
   const handleInputChange = (

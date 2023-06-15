@@ -1,12 +1,7 @@
 "use client";
 
 import React from "react";
-import { Item } from "@/app/types/item";
-
-interface ResultProps {
-  items: Item[];
-  showResults: boolean;
-}
+import { ResultProps } from "@/app/types/item";
 
 const Result: React.FC<ResultProps> = ({ items, showResults }) => {
   return (

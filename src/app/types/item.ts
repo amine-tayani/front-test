@@ -13,3 +13,13 @@ export interface Props {
     id: string
   ) => void;
 }
+
+export interface ResultProps {
+  items: Item[];
+  showResults: boolean;
+}
+
+export interface CardProps {
+  item: Item;
+  index: number;
+}
