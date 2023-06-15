@@ -1,43 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import styled from "@emotion/styled";
 import { Columns, columnsFromBackend } from "./data";
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import Card from "./Card";
 import Result from "./Result";
-
-const Container = styled.div`
-  display: flex;
-  margin-top: 20px;
-`;
-
-const ItemList = styled.div`
-  min-height: 100px;
-  display: flex;
-  flex-direction: column;
-  background: #f3f3f3;
-  min-width: 341px;
-  border-radius: 5px;
-  padding: 15px 15px;
-  margin-right: 45px;
-`;
-
-const ItemColumnStyles = styled.div`
-  margin: 8px;
-  display: flex;
-  width: 100%;
-  min-height: 10vh;
-  justify-content: center;
-`;
-
-const Title = styled.span`
-  color: #10957d;
-  background: rgba(16, 149, 125, 0.15);
-  padding: 2px 10px;
-  border-radius: 5px;
-  align-self: flex-start;
-`;
 
 const Dropzone = () => {
   const [columns, setColumns] = useState<Columns>(columnsFromBackend);
@@ -87,28 +54,31 @@ const Dropzone = () => {
       <DragDropContext
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
       >
-        <Container>
-          <ItemColumnStyles>
+        <div className="flex mt-5">
+          <div className="flex w-full min-h-[10vh] justify-center m-2">
             {Object.entries(columns).map(([columnId, column], index) => {
               return (
                 <Droppable key={columnId} droppableId={columnId}>
                   {(provided, _) => (
-                    <ItemList
+                    <div
+                      className="min-h-[100px] flex flex-col min-w-[341px] mr-[45px] p-[15px] rounded-[5px] bg-[#f3f3f3]"
                       ref={provided.innerRef}
                       {...provided.droppableProps}
                     >
-                      <Title>{column.title}</Title>
+                      <span className="text-[#10957d] self-start px-2.5 py-0.5 rounded-[5px] bg-[rgba(16,149,125,0.15)]">
+                        {column.title}
+                      </span>
                       {column.items.map((item, index) => (
                         <Card key={item.input} item={item} index={index} />
                       ))}
                       {provided.placeholder}
-                    </ItemList>
+                    </div>
                   )}
                 </Droppable>
               );
             })}
-          </ItemColumnStyles>
-        </Container>
+          </div>
+        </div>
       </DragDropContext>
       <div className="mt-4 flex justify-center">
         <button

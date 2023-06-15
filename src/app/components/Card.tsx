@@ -1,26 +1,13 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
-import styled from "@emotion/styled";
-import { CardProps, Item } from "../types/item";
-
-const Item = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 0 20px;
-  min-height: 80px;
-  border-radius: 5px;
-  max-width: 311px;
-  background: white;
-  margin-top: 15px;
-`;
+import { CardProps } from "../types/item";
 
 const Card: React.FC<CardProps> = ({ item, index }) => {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    item.input = e.target.value;
+    const { value } = e.target;
+    item.input = value;
   };
 
   return (
@@ -31,7 +18,7 @@ const Card: React.FC<CardProps> = ({ item, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <Item>
+          <div className="flex flex-col justify-center items-start min-h-[80px] max-w-[311px] mt-[15px] px-5 py-0 rounded-[5px] bg-white">
             {item.type === "text" && (
               <input
                 className="border-2 border-gray-300 p-2"
@@ -59,7 +46,7 @@ const Card: React.FC<CardProps> = ({ item, index }) => {
                 onChange={(event) => handleInputChange(event)}
               />
             )}
-          </Item>
+          </div>
         </div>
       )}
     </Draggable>
