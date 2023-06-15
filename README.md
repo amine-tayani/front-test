@@ -6,7 +6,7 @@
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/amine-tayani/front-test/v2/
+   git clone https://github.com/amine-tayani/front-test/tree/v2
     ```
 
 2. Install the dependencies:
